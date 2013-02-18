@@ -9,7 +9,7 @@
 	<groupId>${project.parent.groupId}</groupId>
 	<artifactId>${module.prefix}-core</artifactId>
 	<packaging>bundle</packaging>
-	<name>${company.name} - Core</name>
+	<name>${careers.name} - Core</name>
 	<description>Core Bundle</description>
 	<build>
 		<plugins>
@@ -83,7 +83,7 @@
 						<groupId>org.apache.sling</groupId>
 						<artifactId>maven-sling-plugin</artifactId>
 						<configuration>
-							<slingUrlSuffix>/apps/company/install/</slingUrlSuffix>
+							<slingUrlSuffix>/apps/careers/install/</slingUrlSuffix>
 						</configuration>
 					</plugin>
 				</plugins>
