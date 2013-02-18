@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+
+    <filter root="/apps/company">
+        <exclude pattern="/apps/apps/config.*"/>
+    </filter>
+    <filter root="/etc/designs/company"/>
+
+</workspaceFilter>

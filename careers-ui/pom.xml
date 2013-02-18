@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.adobe.training</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>${project.parent.groupId}</groupId>
+	<artifactId>${module.prefix}-ui</artifactId>
+	<packaging>jar</packaging>
+	<name>${company.name} - UI</name>
+	<description>UI CRX Package</description>
+	<profiles>
+		<!-- Full Profile: Install everything -->
+		<profile>
+			<id>full</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>${basedir}/src/main/content/jcr_root</directory>
+						<excludes>
+							<exclude>**/*.vlt/**</exclude>
+							<exclude>**/*.vlt</exclude>
+							<exclude>**/*.DS_Store</exclude>
+						</excludes>
+						<targetPath>.</targetPath>
+					</resource>
+					<resource>
+						<directory>${basedir}/src/main/content/META-INF</directory>
+						<excludes>
+							<exclude>**/*.vlt/**</exclude>
+							<exclude>**/*.vlt</exclude>
+							<exclude>**/*.DS_Store</exclude>
+						</excludes>
+						<targetPath>../vault-work/META-INF</targetPath>
+					</resource>
+				</resources>
+				<plugins>
+					<!-- use the vault plugin to create & install the package -->
+					<plugin>
+						<groupId>com.day.jcr.vault</groupId>
+						<artifactId>maven-vault-plugin</artifactId>
+						<version>0.0.6</version>
+						<extensions>true</extensions>
+						<executions>
+							<execution>
+								<id>create-package</id>
+								<goals>
+									<goal>package</goal>
+									<goal>install</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<verbose>true</verbose>
+							<embeddeds>
+								<embedded>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>company-core</artifactId>
+									<target>/apps/company/install</target>
+								</embedded>
+							</embeddeds>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>company-core</artifactId>
+		</dependency>
+<!-- Apache Sling Dependencies  -->
+	
+<!--  Servlet API -->
+</dependencies>
+
+
+</project>
